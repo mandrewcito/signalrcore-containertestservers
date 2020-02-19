@@ -1,18 +1,24 @@
 version: '3'
 services:
-  chatsapmple:
+  signalrcore-chatsapmple:
     build: ./code/signalr/hubs/sample
     ports:
       - "81:80"
     expose:
       - "81"
-  streaming2.1:
+  signalrcore-streaming2.1:
     build: ./code/signalr/streaming/samples/2.1
     ports:
       - "82:80"
     expose:
       - "82"
-  chatauth:
+  # signalrcore-streaming3.0:
+  #  build: ./code/signalr/streaming/samples/3.0
+  #  ports:
+  #    - "84:80"
+  #  expose:
+  #    - "84"
+  signalrcore-chatauth:
     build: ./code/signalr/authn-and-authz/sample
     ports:
       - "83:80"
