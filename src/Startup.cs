@@ -68,6 +68,7 @@ namespace src
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
             services.AddSignalR();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

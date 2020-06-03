@@ -1,26 +1,10 @@
 version: '3'
 services:
-  signalrcore-chatsapmple:
-    build: ./code/signalr/hubs/sample
+  signalrcore-server:
+    build: ./src
     ports:
-      - "81:80"
+      - "5000:80"
+      - "5001:443"
     expose:
-      - "81"
-  signalrcore-streaming2.1:
-    build: ./code/signalr/streaming/samples/2.1
-    ports:
-      - "82:80"
-    expose:
-      - "82"
-  # signalrcore-streaming3.0:
-  #  build: ./code/signalr/streaming/samples/3.0
-  #  ports:
-  #    - "84:80"
-  #  expose:
-  #    - "84"
-  signalrcore-chatauth:
-    build: ./code/signalr/authn-and-authz/sample
-    ports:
-      - "83:80"
-    expose:
-      - "83"
+      - "5000"
+      - "5001"
