@@ -95,7 +95,6 @@ namespace src
                 .AllowAnyHeader());
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseHttpsRedirection();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
