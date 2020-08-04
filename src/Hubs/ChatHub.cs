@@ -67,8 +67,10 @@ namespace src
         }
         public async Task DisconnectMe()
         {
-            Clients.Client(Context.ConnectionId).serverOrderedDisconnect();
-            await Clients.All.SendAsync("ReceiveMessage", $"{Context.ConnectionId} Disconnected");
+            
+           // var client = Clients.Client(Context.ConnectionId).Dis;
+            Context.Abort();
+            //await Clients.All.SendAsync("ReceiveMessage", $"{Context.ConnectionId} Disconnected");
         }
     }
 }
