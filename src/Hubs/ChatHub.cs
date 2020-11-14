@@ -25,10 +25,10 @@ namespace src
             return channel.Reader;
         }
         private async Task WriteItemsAsync(
-    ChannelWriter<int> writer,
-    int count,
-    int delay,
-    CancellationToken cancellationToken)
+            ChannelWriter<int> writer,
+            int count,
+            int delay,
+            CancellationToken cancellationToken)
         {
             Exception localException = null;
             try
@@ -64,6 +64,12 @@ namespace src
         public async Task SendMessage(string user, string message)
         {
             await Clients.All.SendAsync("ReceiveMessage", user, message);
+        }
+        public async Task ThrowException(string message)
+        {
+            await Clients.All.SendAsync("ThrowExceptionCall", message);
+            throw new Exception();
+            await Clients.All.SendAsync("ThrowExceptionCall", message);                        
         }
         public async Task DisconnectMe()
         {
