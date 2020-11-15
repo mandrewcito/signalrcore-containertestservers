@@ -67,7 +67,9 @@ namespace src
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
-            services.AddSignalR();
+            services
+                .AddSignalR()
+                .AddMessagePackProtocol();
             services.AddRazorPages();
         }
 

@@ -6,3 +6,50 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<button id="sendButton">
+    hello!
+</button>
+@section Scripts
+{
+    <script>
+    const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/chatHub")
+    .withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())
+    .configureLogging(signalR.LogLevel.Information)
+    .build();
+
+function start() {
+    try {
+        connection.start();
+        console.log("SignalR Connected.");
+    } catch (err) {
+        console.log(err);
+        setTimeout(start, 5000);
+    }
+    };
+
+connection.onclose(start);
+
+// Start the connection.
+start();
+
+connection.on("ReceiveMessage", (user, message) => {
+    console.log(user,message)
+});
+
+function SendMessage(){
+
+
+}
+
+document.getElementById("sendButton").addEventListener("click", ()=>{
+    try {
+        connection.invoke("SendMessage", "cosas", "mas cosas");
+    } catch (err) {
+        console.error(err);
+    }
+});
+
+</script>
+}
