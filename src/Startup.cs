@@ -1,24 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using System.IdentityModel.Tokens;
-using Microsoft.IdentityModel;
 
-namespace src
+namespace SignalRSample
 {
-    public class NameUserIdProvider : IUserIdProvider
+	using System.Text;
+	using Hubs;
+	using Microsoft.AspNetCore.Authentication.JwtBearer;
+	using Microsoft.AspNetCore.Builder;
+	using Microsoft.AspNetCore.Hosting;
+	using Microsoft.AspNetCore.SignalR;
+	using Microsoft.Extensions.Configuration;
+	using Microsoft.Extensions.DependencyInjection;
+	using Microsoft.Extensions.Hosting;
+	using Microsoft.IdentityModel.Tokens;
+	using Models.services;
+	using Models.Utils;
+
+	public class NameUserIdProvider : IUserIdProvider
     {
         public string GetUserId(HubConnectionContext connection)
         {

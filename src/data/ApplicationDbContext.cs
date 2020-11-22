@@ -1,7 +1,7 @@
-using Microsoft.EntityFrameworkCore;
+namespace SignalRSample.Data {
+	using Microsoft.EntityFrameworkCore;
 
-namespace src {
-        public class ApplicationDbContext : DbContext
+	public class ApplicationDbContext : DbContext
     {
     }
 }

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using src.Models;
-
-namespace src.Controllers
+﻿namespace SignalRSample.Controllers
 {
-    public class HomeController : Controller
+	using System.Diagnostics;
+	using Microsoft.AspNetCore.Mvc;
+	using Microsoft.Extensions.Logging;
+	using Models;
+
+	public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
 

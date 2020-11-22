@@ -1,8 +1,6 @@
-using System;
-
-namespace src.Models
+namespace SignalRSample.Models
 {
-    public class ErrorViewModel
+	public class ErrorViewModel
     {
         public string RequestId { get; set; }
 

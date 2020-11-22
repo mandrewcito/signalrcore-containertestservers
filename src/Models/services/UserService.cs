@@ -1,15 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-
-namespace src
+namespace SignalRSample.Models.services
 {
-    public interface IUserService
+	using System;
+	using System.Collections.Generic;
+	using System.IdentityModel.Tokens.Jwt;
+	using System.Linq;
+	using System.Security.Claims;
+	using System.Text;
+	using Entities;
+	using Microsoft.Extensions.Options;
+	using Microsoft.IdentityModel.Tokens;
+	using Utils;
+
+	public interface IUserService
     {
         User Authenticate(string username, string password);
         IEnumerable<User> GetAll();
@@ -18,7 +20,7 @@ namespace src
     public class UserService : IUserService
     {
         // users hardcoded for simplicity, store in a db with hashed passwords in production applications
-        private List<User> _users = new List<User>
+        private readonly List<User> _users = new List<User>
         {
             new User { Id = 1, FirstName = "Test", LastName = "User", Username = "test", Password = "test" }
         };

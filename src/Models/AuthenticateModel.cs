@@ -1,7 +1,7 @@
-using System.ComponentModel.DataAnnotations;
+namespace SignalRSample.Models {
+	using System.ComponentModel.DataAnnotations;
 
-namespace src {
-     public class AuthenticateModel
+	public class AuthenticateModel
     {
         [Required]
         public string Username { get; set; }

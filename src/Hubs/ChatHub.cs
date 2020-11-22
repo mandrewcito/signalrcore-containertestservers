@@ -1,14 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Channels;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.SignalR;
-
-namespace src
+namespace SignalRSample.Hubs
 {
-    public class ChatHub : Hub
+	using System;
+	using System.Threading;
+	using System.Threading.Channels;
+	using System.Threading.Tasks;
+	using Microsoft.AspNetCore.SignalR;
+
+	public class ChatHub : Hub
     {
         public ChannelReader<int> Counter(
         int count,
@@ -68,15 +66,12 @@ namespace src
         public async Task ThrowException(string message)
         {
             await Clients.All.SendAsync("ThrowExceptionCall", message);
-            throw new Exception();
-            await Clients.All.SendAsync("ThrowExceptionCall", message);                        
+            throw new Exception();                 
         }
-        public async Task DisconnectMe()
+        public async void DisconnectMe()
         {
-            
-           // var client = Clients.Client(Context.ConnectionId).Dis;
+	        await Clients.All.SendAsync("ReceiveMessage", $"{Context.ConnectionId} Disconnected");
             Context.Abort();
-            //await Clients.All.SendAsync("ReceiveMessage", $"{Context.ConnectionId} Disconnected");
         }
     }
 }

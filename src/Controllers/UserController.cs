@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using src.Models;
-
-namespace src.Controllers
+﻿namespace SignalRSample.Controllers
 {
-   [Authorize]
+	using Microsoft.AspNetCore.Authorization;
+	using Microsoft.AspNetCore.Mvc;
+	using Models;
+	using Models.services;
+
+	[Authorize]
     [ApiController]
     [Route("[controller]")]
     public class UsersController : ControllerBase
