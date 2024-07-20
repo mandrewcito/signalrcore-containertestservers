@@ -68,6 +68,13 @@ namespace SignalRSample.Hubs
             await Clients.All.SendAsync("ThrowExceptionCall", message);
             throw new Exception();                 
         }
+        
+        public override Task OnDisconnectedAsync(Exception exception)
+        {
+            Console.WriteLine(exception);
+            return base.OnDisconnectedAsync(exception);
+        }
+
         public async void DisconnectMe()
         {
 	        await Clients.All.SendAsync("ReceiveMessage", $"{Context.ConnectionId} Disconnected");
