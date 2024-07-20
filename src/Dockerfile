@@ -1,6 +1,6 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS base
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-buster-slim AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
@@ -11,7 +11,7 @@ ENV ENV DOTNET_RUNNING_IN_CONTAINER=true
 ENV ASPNETCORE_ENVIRONMENT=Development
 ENV ASPNETCORE_URLS=https://+:443;http://+:80
 
-FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0-buster-slim AS build
 WORKDIR /SignalRSample
 COPY ["SignalRSample.csproj", ""]
 RUN dotnet restore "./SignalRSample.csproj"
