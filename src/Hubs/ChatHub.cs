@@ -77,8 +77,19 @@ namespace SignalRSample.Hubs
 
         public async void DisconnectMe()
         {
-	        await Clients.All.SendAsync("ReceiveMessage", $"{Context.ConnectionId} Disconnected");
-            Context.Abort();
+            try
+                {
+                    await Clients.All.SendAsync("ReceiveMessage", $"{Context.ConnectionId} Disconnected");
+                }   
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    // Manejar la excepción aquí (por ejemplo, registrar el error)
+                }
+                finally
+                {
+                    Context.Abort();
+                }
         }
     }
 }

@@ -13,7 +13,7 @@ ENV ASPNETCORE_URLS=https://+:443;http://+:80
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /SignalRSample
-COPY ["SignalRSample.csproj", ""]
+COPY ["SignalRSample.csproj", "./"]
 RUN dotnet restore "./SignalRSample.csproj"
 COPY . .
 WORKDIR "/SignalRSample/."
