@@ -1,6 +1,15 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
+
+MAINTAINER Andrés Baamonde Lozano aka mandrewcito <me@mandrewcito.dev>
+
+LABEL name="mandrewcito/signalrcoreserver"\
+    description="SignalR Core test server by mandrewcito"\
+    version="1.00.00"\
+    maintainer="mandrewcito"
+
+
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
