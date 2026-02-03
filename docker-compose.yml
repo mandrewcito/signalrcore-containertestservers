@@ -1,9 +1,19 @@
 services:
   signalrcore-server:
-    build: ./src
+    build: ./src/SignalRSampleServer
     ports:
       - "5000:80"
       - "5001:443"
     expose:
       - "5000"
       - "5001"
+  signalrcore-serverless-function:
+    build: ./src/SignalRAzure
+    ports:
+      - "7071:80"
+    expose:
+      - 7071
+    environment:
+      - AzureSignalRConnectionString=${SIGNALRCORE_AZURE_CONNECTION_STRING}
+      - FUNCTIONS_WORKER_RUNTIME=python
+      - AzureWebJobsStorage=UseDevelopmentStorage=true
