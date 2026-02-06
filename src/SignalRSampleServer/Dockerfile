@@ -2,21 +2,19 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
 
-MAINTAINER Andrés Baamonde Lozano aka mandrewcito <me@mandrewcito.dev>
-
 LABEL name="mandrewcito/signalrcoreserver"\
     description="SignalR Core test server by mandrewcito"\
     version="1.00.00"\
-    maintainer="mandrewcito"
+    maintainer="Andrés Baamonde Lozano aka mandrewcito <me@mandrewcito.dev>"
 
 
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-ENV ASPNETCORE_Kestrel__Certificates__Default__Password=some
-ENV ASPNETCORE_Kestrel__Certificates__Default__Path=keyStore.p12
-ENV ENV DOTNET_RUNNING_IN_CONTAINER=true	
+ENV ASPNETCORE_Kestrel__Certificates__Default__Password=signalrcore
+ENV ASPNETCORE_Kestrel__Certificates__Default__Path=localhost.pfx
+ENV ENV DOTNET_RUNNING_IN_CONTAINER=true
 ENV ASPNETCORE_ENVIRONMENT=Development
 ENV ASPNETCORE_URLS=https://+:443;http://+:80
 
@@ -34,5 +32,5 @@ RUN dotnet publish "SignalRSample.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY keyStore.p12 keyStore.p12
+COPY localhost.pfx localhost.pfx
 ENTRYPOINT ["dotnet", "SignalRSample.dll"]

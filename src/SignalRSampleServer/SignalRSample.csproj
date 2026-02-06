@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="keyStore.p12" />
+    <None Remove="localhost.pfx" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="keyStore.p12">
+    <Content Include="localhost.pfx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
